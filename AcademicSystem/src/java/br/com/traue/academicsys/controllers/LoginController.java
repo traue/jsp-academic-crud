@@ -1,8 +1,8 @@
-package br.sisacademico.controllers;
+package br.com.traue.academicsys.controllers;
 
-import br.sisacademico.dao.UsuarioDAO;
-import br.sisacademico.model.Usuario;
-import br.sisacademico.helper.MD5;
+import br.com.traue.academicsys.dao.UserDAO;
+import br.com.traue.academicsys.model.User;
+import br.com.traue.academicsys.helper.MD5;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -28,8 +28,8 @@ public class LoginController extends HttpServlet {
             String usuario = request.getParameter("usuario");
             String senha = MD5.hashText(request.getParameter("senha"));
             
-            UsuarioDAO uDAO = new UsuarioDAO();
-            Usuario user = uDAO.autentica(usuario, senha);
+            UserDAO uDAO = new UserDAO();
+            User user = uDAO.authentication(usuario, senha);
             
             if (user.isAutenticado()) {
                 session.setAttribute("user", user);

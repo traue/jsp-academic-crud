@@ -1,16 +1,16 @@
-package br.sisacademico.model;
+package br.com.traue.academicsys.model;
 
-public class Aluno {
+public class Student {
 
     private int idAluno;
     private String nome;
     private int ra;
-    private Curso curso;
+    private Course curso;
 
-    public Aluno() {
+    public Student() {
     }
 
-    public Aluno(int idAluno, String nome, int ra, Curso curso) {
+    public Student(int idAluno, String nome, int ra, Course curso) {
         this.idAluno = idAluno;
         this.nome = nome;
         this.ra = ra;
@@ -41,11 +41,11 @@ public class Aluno {
         this.ra = ra;
     }
 
-    public Curso getCurso() {
+    public Course getCurso() {
         return curso;
     }
 
-    public void setCurso(Curso curso) {
+    public void setCurso(Course curso) {
         this.curso = curso;
     }
 }

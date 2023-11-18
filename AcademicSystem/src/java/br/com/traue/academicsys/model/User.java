@@ -1,6 +1,6 @@
-package br.sisacademico.model;
+package br.com.traue.academicsys.model;
 
-public class Usuario {
+public class User {
 
     private int idUsuario;
     private String userName;

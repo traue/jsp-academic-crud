@@ -1,18 +1,18 @@
-package br.sisacademico.dao;
+package br.com.traue.academicsys.dao;
 
-import br.sisacademico.model.Usuario;
+import br.com.traue.academicsys.model.User;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class UsuarioDAO {
+public class UserDAO {
 
-    public Usuario autentica(String usuario, String senha) {
-        Usuario user = new Usuario();
+    public User authentication(String usuario, String senha) {
+        User user = new User();
 
-        String query = "SELECT idUsuario, usuario "
-                + "FROM usuario WHERE usuario = ? "
-                + "and senha = ?";
+        String query = "SELECT uid, user "
+                + "FROM user WHERE user = ? "
+                + "and password = ?";
 
         try {
             PreparedStatement stm = ConnectionFctory.getConnection()
@@ -24,8 +24,8 @@ public class UsuarioDAO {
             ResultSet resultado = stm.executeQuery();
 
             while (resultado.next()) {
-                user.setIdUsuario((resultado.getInt("idUsuario")));
-                user.setUserName(resultado.getString("usuario"));
+                user.setIdUsuario((resultado.getInt("uid")));
+                user.setUserName(resultado.getString("user"));
                 user.setAutenticado(true);
             }
 

@@ -7,10 +7,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Sis Academico</title>
+        <title>AcademiSys</title>
     </head>
     <body>
         <jsp:include page="menu.jsp"></jsp:include>
-        <h1>Oi!</h1>
+        <h1>Hi!</h1>
     </body>
 </html>

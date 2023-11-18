@@ -1,68 +1,69 @@
--- PROJETO SIS_ACADEMICO
--- BANCO: SIS_ACADEMICO_2N
+-- ACADEMIC_SYS PROJET
+-- DB: ACADEMIC_SYS
 
 
--- TABLEA DOS CURSOS
-CREATE TABLE curso(
-    idCurso INT PRIMARY KEY AUTO_INCREMENT,
-    nomeCurso VARCHAR(90) NOT NULL,
-    tipoCurso VARCHAR(50) NOT NULL
+-- COURSES TABLE
+CREATE TABLE course(
+    courseId INT PRIMARY KEY AUTO_INCREMENT,
+    courseName VARCHAR(90) NOT NULL,
+    courseType VARCHAR(50) NOT NULL
 );
 
--- TABELA DOS ALUNOS
-CREATE TABLE aluno(
-    idAluno INT PRIMARY KEY AUTO_INCREMENT,
-    ra INT NOT NULL UNIQUE,
-    nome VARCHAR(100) NOT NULL,
-    idCurso INT,
-    	CONSTRAINT fk_aluno_curso FOREIGN KEY(idCurso)
-    	REFERENCES curso(idCurso)
+-- STUDENTS TABLE
+CREATE TABLE student(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    studentNumber INT NOT NULL UNIQUE,
+    studentName VARCHAR(100) NOT NULL,
+    courseId INT,
+    	CONSTRAINT fk_student_course FOREIGN KEY(id)
+    	REFERENCES course(courseId)
 );
 
 -- TABELA DOS USUÁRIOS DO SISTEMA
-CREATE TABLE usuario(
-    idUsuario INT PRIMARY KEY AUTO_INCREMENT,
-    usuario VARCHAR(20) NOT NULL UNIQUE,
-    senha VARCHAR(128) NOT NULL
+CREATE TABLE user(
+    uid INT PRIMARY KEY AUTO_INCREMENT,
+    user VARCHAR(20) NOT NULL UNIQUE,
+    password VARCHAR(128) NOT NULL
 );
 
 
 -- ALGUNS INSERTS....
-INSERT INTO curso (nomeCurso, tipoCurso)
-VALUES ('TADS', 'Tecnologo');
+INSERT INTO course (courseName, courseType)
+VALUES ('Course 1', 'Free Course');
 
-INSERT INTO curso (nomeCurso, tipoCurso)
-VALUES ('Ciência da Computação', 'Bacharelado');
+INSERT INTO course (courseName, courseType)
+VALUES ('Computer Science', 'Bachelor of Science');
 
-INSERT INTO curso (nomeCurso, tipoCurso)
-VALUES ('Redes', 'Tecnólogo');
+INSERT INTO course (courseName, courseType)
+VALUES ('Flutter', 'Module');
 
-INSERT INTO curso (nomeCurso, tipoCurso)
-VALUES ('Dancinha do TikTok', 'Doutorado');
+INSERT INTO course (courseName, courseType)
+VALUES ('TikTok dance', 'PhD');
 
-INSERT INTO curso (nomeCurso, tipoCurso)
-VALUES ('Física', 'Livre');
+INSERT INTO course (courseName, courseType)
+VALUES ('Music', 'Master');
 
-INSERT INTO aluno(ra, nome, idCurso)
+INSERT INTO student(studentNumber, studentName, courseId)
 VALUES (1234, 'Thiago', 2);
 
-INSERT INTO aluno(ra, nome, idCurso)
-VALUES (122, 'Mia', 3);
+INSERT INTO student(studentNumber, studentName, courseId)
+VALUES (122, 'Traue', 3);
 
-INSERT INTO aluno(ra, nome, idCurso)
-VALUES (3211, 'Bla', 1);
+INSERT INTO student(studentNumber, studentName, courseId)
+VALUES (3211, 'Mario', 1);
 
-INSERT INTO aluno(ra, nome, idCurso)
-VALUES (666, 'Luci', 4);
+INSERT INTO student(studentNumber, studentName, courseId)
+VALUES (665, 'Little Prince', 4);
 
-INSERT INTO aluno(ra, nome, idCurso)
-VALUES (333, 'Blé', 1);
+INSERT INTO student(studentNumber, studentName, courseId)
+VALUES (333, 'Shrek', 1);
 
-INSERT INTO aluno(ra, nome, idCurso)
-VALUES (444, 'Marcio Klein', 1);
+INSERT INTO student(studentNumber, studentName, courseId)
+VALUES (444, 'Super man', 1);
 
-INSERT INTO usuario (usuario, senha)
-VALUES ('traue', '10a9c136d796bab18d3e144092a4f20a'); --Senha123 (em MD5)
+INSERT INTO user (user, password)
+VALUES ('traue', '10a9c136d796bab18d3e144092a4f20a'); --Senha123 (MD5)
 
-INSERT INTO usuario (usuario, senha)
-VALUES ('mia', '10a9c136d796bab18d3e144092a4f20a'); --Senha123 (em MD5)
+INSERT INTO user (user, password)
+VALUES ('test', '10a9c136d796bab18d3e144092a4f20a'); --Senha123 (MD5)
+

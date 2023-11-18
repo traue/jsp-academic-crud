@@ -16,9 +16,9 @@
                 var url = '';
 
                 if (pagina == 'cursos') {
-                    var url = '../../CursoController?acao=LEITURA';
+                    var url = '../../CursoController?acao=READ';
                 } else {
-                    url = '../../AlunoController?acao=LEITURA';
+                    url = '../../AlunoController?acao=READ';
                     const idCurso = urlParams.get('idCurso');
                     if(idCurso != null)
                         url += '&idCurso=' + idCurso;

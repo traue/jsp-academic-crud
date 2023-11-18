@@ -1,4 +1,4 @@
-package br.sisacademico.dao;
+package br.com.traue.academicsys.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class ConnectionFctory {
 
-    private static final String DBURL = "jdbc:mysql://localhost/sis_academico_2n";
+    private static final String DBURL = "jdbc:mysql://localhost/academic_sys";
     private static final String DBUSER = "root";
     private static final String DBPASS = "";
 

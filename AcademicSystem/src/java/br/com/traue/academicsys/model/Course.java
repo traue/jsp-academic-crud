@@ -1,15 +1,15 @@
-package br.sisacademico.model;
+package br.com.traue.academicsys.model;
 
-public class Curso {
+public class Course {
 
     private int idCurso;
     private String nomeCurso;
     private String tipoCurso;
 
-    public Curso() {
+    public Course() {
     }
 
-    public Curso(int idCurso, String nomeCurso, String tipoCurso) {
+    public Course(int idCurso, String nomeCurso, String tipoCurso) {
         this.idCurso = idCurso;
         this.nomeCurso = nomeCurso;
         this.tipoCurso = tipoCurso;

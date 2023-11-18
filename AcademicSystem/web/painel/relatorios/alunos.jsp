@@ -1,8 +1,8 @@
+<%@page import="br.com.traue.academicsys.model.Student"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="br.sisacademico.model.Aluno"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
-    ArrayList<Aluno> alunos;
+    ArrayList<Student> alunos;
     alunos = (ArrayList) session.getAttribute("listaDeAlunos");
 
     boolean mostraPainelFiltro
@@ -12,7 +12,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>SisAcadêmico - Alunos</title>
+        <title>AcademicSys - Students</title>
     </head>
     <body>
         <jsp:include page="../menu.jsp"></jsp:include>
@@ -39,25 +39,25 @@
             <div class="table-responsive-md" style="width: 90%; margin: 0 auto !important;">
                 <table class="table justify-content-centeru">
                     <thead class="thead-dark">
-                    <th scope="col">RA</th>
-                    <th scope="col">Nome do Aluno</th>
-                    <th scope="col">Curso</th>
-                    <th scope="col">Tipo de Curso</th>
-                    <th scope="col" class="text-center">Editar</th>
-                    <th scope="col" class="text-center">Excluis</th>
+                    <th scope="col">Student Number</th>
+                    <th scope="col">Student Name</th>
+                    <th scope="col">Course</th>
+                    <th scope="col">Course Type</th>
+                    <th scope="col" class="text-center">Edit</th>
+                    <th scope="col" class="text-center">Delete</th>
                     </thead>
                     <tbody>
-                        <% for (Aluno a : alunos) {%>
+                        <% for (Student s : alunos) {%>
                         <tr>
-                            <td><%=a.getRa()%></td>
-                            <td><%=a.getNome()%></td>
-                            <td><%=a.getCurso().getNomeCurso()%></td>
-                            <td><%=a.getCurso().getTipoCurso()%></td>
-                            <td class="text-center"><a class="btn btn-outline-primary" href="../cadastros/aluno.jsp?idAluno=<%=a.getIdAluno()%>">Editar</a></td>
+                            <td><%=s.getRa() %></td>
+                            <td><%=s.getNome()%></td>
+                            <td><%=s.getCurso().getNomeCurso()%></td>
+                            <td><%=s.getCurso().getTipoCurso()%></td>
+                            <td class="text-center"><a class="btn btn-outline-primary" href="../cadastros/aluno.jsp?idAluno=<%=s.getIdAluno()%>">Editar</a></td>
                             <% if (mostraPainelFiltro) {%>
-                            <td class="text-center"><a class="btn btn-outline-danger" id="deleteAluno" href="../AlunoController?acao=exclusao&idCurso=<%=alunos.get(0).getCurso().getIdCurso()%>&idAluno=<%=a.getIdAluno()%>">Excluir</td>
+                            <td class="text-center"><a class="btn btn-outline-danger" id="deleteAluno" href="../AlunoController?acao=exclusao&idCurso=<%=alunos.get(0).getCurso().getIdCurso()%>&idAluno=<%=s.getIdAluno()%>">Excluir</td>
                             <% } else {%>
-                            <td class="text-center"><a class="btn btn-outline-danger" id="deleteAluno" href="../AlunoController?acao=exclusao&idAluno=<%=a.getIdAluno()%>">Excluir</td>
+                            <td class="text-center"><a class="btn btn-outline-danger" id="deleteAluno" href="../AlunoController?acao=exclusao&idAluno=<%=s.getIdAluno()%>">Excluir</td>
                             <% } %>
                         </tr>
                         <% }%>

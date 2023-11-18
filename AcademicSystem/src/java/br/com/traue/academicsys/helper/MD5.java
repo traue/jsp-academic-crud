@@ -1,4 +1,4 @@
-package br.sisacademico.helper;
+package br.com.traue.academicsys.helper;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
@@ -20,7 +20,7 @@ public class MD5 {
             }
             return hashText;
         } catch (NoSuchAlgorithmException ex) {
-            System.out.println("Erro na criptografia");
+            System.out.println("Cryptography error");
         }
         return null;
     }

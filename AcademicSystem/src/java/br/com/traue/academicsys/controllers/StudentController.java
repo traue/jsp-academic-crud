@@ -1,8 +1,8 @@
-package br.sisacademico.controllers;
+package br.com.traue.academicsys.controllers;
 
-import br.sisacademico.dao.AlunoDAO;
-import br.sisacademico.model.Aluno;
-import br.sisacademico.util.AcadoDAO;
+import br.com.traue.academicsys.dao.StudentDAO;
+import br.com.traue.academicsys.model.Student;
+import br.com.traue.academicsys.util.DaoActionsEnum;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -15,17 +15,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public class AlunoController extends HttpServlet {
+public class StudentController extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            AcadoDAO acao = AcadoDAO.valueOf(request.getParameter("acao"));
-            AlunoDAO aDAO = new AlunoDAO();
+            DaoActionsEnum acao = DaoActionsEnum.valueOf(request.getParameter("acao"));
+            StudentDAO aDAO = new StudentDAO();
             switch (acao) {
-                case LEITURA:
-                    ArrayList<Aluno> alunos;
+                case READ:
+                    ArrayList<Student> alunos;
                     String url = "./painel/relatorios/alunos.jsp";
                     if (request.getParameter("idCurso") == null) {
                         alunos = aDAO.getAlunos();
@@ -59,7 +59,7 @@ public class AlunoController extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(AlunoController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(StudentController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -77,7 +77,7 @@ public class AlunoController extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(AlunoController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(StudentController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

@@ -1,8 +1,8 @@
-package br.sisacademico.controllers;
+package br.com.traue.academicsys.controllers;
 
-import br.sisacademico.dao.CursoDAO;
-import br.sisacademico.model.Curso;
-import br.sisacademico.util.AcadoDAO;
+import br.com.traue.academicsys.dao.CourseDAO;
+import br.com.traue.academicsys.model.Course;
+import br.com.traue.academicsys.util.DaoActionsEnum;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public class CursoController extends HttpServlet {
+public class CourseController extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
@@ -23,11 +23,11 @@ public class CursoController extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
 
         try (PrintWriter out = response.getWriter()) {
-            AcadoDAO acao = AcadoDAO.valueOf(request.getParameter("acao"));
-            CursoDAO cDAO = new CursoDAO();
+            DaoActionsEnum acao = DaoActionsEnum.valueOf(request.getParameter("acao"));
+            CourseDAO cDAO = new CourseDAO();
             switch (acao) {
-                case LEITURA:
-                    Map<Curso, Integer> cursos = cDAO.getTodosCursosCountAlunos();
+                case READ:
+                    Map<Course, Integer> cursos = cDAO.getTodosCursosCountAlunos();
 
                     //forma 1: Colocando o map na sessão:
                     HttpSession session = request.getSession();
@@ -59,7 +59,7 @@ public class CursoController extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(CursoController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CourseController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -77,7 +77,7 @@ public class CursoController extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(CursoController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CourseController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
